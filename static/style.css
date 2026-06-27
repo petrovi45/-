@@ -1,0 +1,403 @@
+/* ============================================
+   НЕОНОВЫЙ ТЕМНЫЙ ДИЗАЙН ДЛЯ КИНОСОВЕТЧИКА
+   Современный футуристический стиль
+   ============================================ */
+
+/* ---------- ОБНУЛЕНИЕ & БАЗА ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Основные цвета */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #181825;
+    --bg-card-hover: #1f1f32;
+    --bg-input: #0d0d16;
+
+    /* Неоновые акценты */
+    --neon-blue: #00d4ff;
+    --neon-pink: #ff2d95;
+    --neon-purple: #b026ff;
+    --neon-cyan: #00ffcc;
+    --neon-yellow: #ffe600;
+
+    /* Тени (свечение) */
+    --glow-blue: 0 0 30px rgba(0, 212, 255, 0.25);
+    --glow-pink: 0 0 30px rgba(255, 45, 149, 0.25);
+    --glow-purple: 0 0 30px rgba(176, 38, 255, 0.25);
+
+    /* Текст */
+    --text-primary: #f0f0ff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #606080;
+
+    /* Градиенты */
+    --gradient-neon: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    --gradient-pink-blue: linear-gradient(135deg, var(--neon-pink), var(--neon-blue));
+    --gradient-bg: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.04) 0%, transparent 60%),
+                   radial-gradient(ellipse at 80% 50%, rgba(176, 38, 255, 0.04) 0%, transparent 60%);
+
+    /* Шрифты */
+    --font-main: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+    /* Размеры */
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    min-height: 100vh;
+    background-image: var(--gradient-bg);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* ---------- СКРОЛЛБАР ---------- */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-blue);
+    border-radius: 10px;
+    box-shadow: var(--glow-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-purple);
+    box-shadow: var(--glow-purple);
+}
+
+/* ---------- ВЫДЕЛЕНИЕ ТЕКСТА ---------- */
+::selection {
+    background: var(--neon-blue);
+    color: var(--bg-primary);
+}
+
+/* ---------- ГЛАВНЫЙ КОНТЕЙНЕР ---------- */
+body > * {
+    max-width: 700px;
+    width: 100%;
+}
+
+/* ---------- ЗАГОЛОВОК ---------- */
+h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.15));
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.1));
+    }
+    100% {
+        filter: drop-shadow(0 0 50px rgba(176, 38, 255, 0.2));
+    }
+}
+
+/* ---------- ОПИСАНИЕ ---------- */
+p {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- ФОРМА ---------- */
+form {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-neon);
+    opacity: 0.6;
+}
+
+form:hover {
+    border-color: rgba(0, 212, 255, 0.12);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), var(--glow-blue);
+}
+
+/* ---------- ТЕКСТОВОЕ ПОЛЕ ---------- */
+textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: var(--bg-input);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: all var(--transition);
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+}
+
+textarea:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.08), var(--glow-blue);
+    background: var(--bg-card);
+}
+
+textarea::placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ---------- КНОПКА ---------- */
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: 0.5px;
+    background: var(--gradient-neon);
+    color: var(--bg-primary);
+    box-shadow: var(--glow-blue);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    transform: scale(0.5);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.35);
+}
+
+button:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- РЕЗУЛЬТАТ (рекомендация) ---------- */
+.result {
+    margin-top: 32px;
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 45, 149, 0.15);
+    box-shadow: var(--glow-pink);
+    animation: fadeSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-pink-blue);
+    opacity: 0.8;
+}
+
+.result h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neon-pink);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    text-shadow: 0 0 20px rgba(255, 45, 149, 0.2);
+}
+
+.result p {
+    text-align: left;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    margin: 0;
+    max-width: 100%;
+    line-height: 1.8;
+}
+
+.result p strong,
+.result p b {
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+/* Анимация появления результата */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ---------- НЕОНОВЫЕ ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ ---------- */
+/* Светящиеся точки по углам формы */
+form::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 60px rgba(0, 212, 255, 0.1);
+    opacity: 0.4;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+/* ---------- АДАПТИВНОСТЬ ---------- */
+@media (max-width: 768px) {
+    body {
+        padding: 24px 16px;
+    }
+
+    form {
+        padding: 24px 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 0 8px;
+    }
+
+    textarea {
+        min-height: 100px;
+        font-size: 0.95rem;
+        padding: 14px 16px;
+    }
+
+    button {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+
+    .result {
+        padding: 20px 22px;
+    }
+
+    .result p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 18px 14px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    button {
+        font-size: 0.85rem;
+        padding: 12px 20px;
+    }
+
+    .result {
+        padding: 16px 18px;
+    }
+}
+
+/* ---------- ДОПОЛНИТЕЛЬНО: поддержка тёмной темы системой ---------- */
+@media (prefers-color-scheme: light) {
+    body {
+        background: #0a0a0f;
+    }
+}
